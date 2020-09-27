@@ -1,0 +1,34 @@
+<p>Az én {{libraryViewTitle}}</p>
+
+<div>
+  <div id="{{literature.id}}"><span>title </span> is <a href="{{literature.URL}}">{{literature.title}}</a></div>
+  <div><span>status </span> is {{literature.status}}</div>
+</div>
+
+<div>
+  <label>
+    <input [(ngModel)]="literature.title" placeholder="title"/>
+  </label>
+</div>
+
+
+<div>
+  <ul class="literatures">
+    <li *ngFor="let literature of literatures" [class.selected]="literature === selectedLiteratureItem" (click)="onSelect(literature)">
+      <div class="badge" id="list-{{literature.id}}">
+        <span>title </span> is <a href="{{literature.URL}}">{{literature.title}}</a>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+<div *ngIf="selectedLiteratureItem">
+  <h2>{{selectedLiteratureItem.title}} Details</h2>
+  <div><span>id: </span>{{selectedLiteratureItem.id}}</div>
+  <div>
+    <label>title:
+      <input [(ngModel)]="selectedLiteratureItem.title" placeholder="title"/>
+    </label>
+  </div>
+</div>
